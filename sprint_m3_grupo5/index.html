@@ -17,29 +17,29 @@
 
 <body>
 
-    <header class="container">
+    <header class="container mt-5 text-center">
         <h1>Gestión de Recursos Humanos</h1>
     </header>
 
-    <main class="container">
+    <main class="container mt-5">
         <section class="row g-4">
             <form>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label">Primer nombre</label>
                         <input type="text" class="form-control" id="nombre">
                         <div id="NO-nombre" class="NO">
                             Debes ingresar un Nombre
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label">Primer apellido</label>
                         <input type="text" class="form-control" id="apellido">
                         <div id="NO-apellido" class="NO">
                             Debes ingresar un Apellido
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom02" class="form-label">Fecha de Nacimiento</label>
                         <input type="datetime-local" class="form-control" id="fechaNacimiento"> <!-- asegurarse de usar el
                         correcto "type" -->
@@ -47,7 +47,7 @@
                             Debes ingresar una Fecha
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom04" class="form-label">¿Trabajador activo?</label>
                         <select class="form-select" id="trabajadorActivo">
                             <option selected="" disabled="" value="">Seleccione una opción</option>
@@ -58,7 +58,7 @@
                             Este campo es obligatorio
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom02" class="form-label">Fecha ingreso a la organización</label>
                         <input type="datetime-local" class="form-control" id="fechaIngreso"> <!-- asegurarse de usar el
                         correcto "type" -->
@@ -66,21 +66,21 @@
                             Debes ingresar una Fecha
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label">Sueldo actual</label>
                         <input type="number" class="form-control" id="sueldoActual">
                         <div id="NO-sueldo" class="NO">
                             Debes ingresar un monto
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label class="form-label">Sueldo semestre anterior</label>
                         <input type="number" class="form-control" id="sueldoSemAnt">
                         <div id="NO-sueldoSemAnt" class="NO">
                             Debes ingresar un monto
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <label for="validationCustom04" class="form-label">Carga Familiar</label>
                         <select class="form-select" id="cargaFamiliar">
                             <option selected="" disabled="" value="">Seleccione una opción</option>
@@ -89,14 +89,14 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-4">
                     <label class="form-label">Cantidad de cargas familiares</label>
                     <input type="number" class="form-control" id="cantidadCargas">
                     <div id="NO-cantidadCargas" class="NO">
                         Debes ingresar un númeor
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mb-4">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="confirmaInfo">
                         <label class="form-check-label" for="invalidCheck">
@@ -113,25 +113,85 @@
             <button class="btn btn-success" id="btnEnviar">Enviar</button>
         </div>
 
-        <!--   <div id="mensaje" class="col-12 py-5">
-            Datos de persona ingresados
-        </div> -->
+        <div id="mensaje" class="col-12 py-5"> <!-- este mensaje debe aparecer al dar click en "enviar" la info del formulario -->
+            Datos ingresados
+        </div>
 
-        <section class="contair">
-            <h2>Entrega de informes</h2>
-            <div>
-                <h3>Informe de cargas</h3>
-                <div id="respuestas"></div>
-            </div>
-            <div>
-                <h3>Sueldo final</h3>
-                <div id="respuestas2"></div>
-            </div>
-            <div>
-                <h3>Tiempo de permanencia</h3>
-                <div id="respuestas3"></div>
+        <section class="row mb-5">
+            <div class="col-4">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalGral">
+                    Informe General
+                </button>
+                <div class="modal fade" id="modalGral" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">Informe
+                                    General</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p style="color: black;" id="informeInfo"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <div class="col-4">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#sueldoTotal">
+                    Sueldo total
+                </button>
+                <div class="modal fade" id="sueldoTotal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">Sueldo Total
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p style="color: black;" id="informeSueldo"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tiempoPerm">
+                    Tiempo de permanencia
+                </button>
+                <div class="modal fade" id="tiempoPerm" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black;">Tiempo de
+                                    Permanencia</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p style="color: black;" id="informePermanencia">aqui va el informe de permanencia</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
